@@ -40,7 +40,7 @@ The plugin dynamically supports multiple hologram providers. You must choose one
     * **Required Plugin:** None.
     * *Note: Works out-of-the-box, using vanilla entities.*
 * **HolographicDisplays:**
-    * **Required Plugin:** [HolographicDisplays Plugin]([https://dev.bukkit.org/projects/holographic-displays)).
+    * **Required Plugin:** [HolographicDisplays Plugin]([https://dev.bukkit.org/projects/holographic-displays).
     * *Note: Must be selected as the provider in your configuration.*
 * **DecentHolograms:**
     * **Required Plugin:** [DecentHolograms Plugin](https://www.spigotmc.org/resources/decentholograms.96749/).
