@@ -1,0 +1,75 @@
+plugins {
+    id 'java'
+    // Используем плагин run-paper
+    id("xyz.jpenilla.run-paper") version "2.3.1"
+}
+
+group = 'com.mrrezik'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+
+    // --- ДОБАВЛЕННЫЕ РЕПОЗИТОРИИ ДЛЯ ГОЛОГРАММ ---
+    // Репозиторий для HolographicDisplays
+    maven { url 'https://repo.codemc.io/repository/maven-public/' }
+
+    // Репозиторий для DecentHolograms
+    maven { url 'https://jitpack.io' }
+    // ------------------------------------------------
+}
+
+dependencies {
+    // ВАЖНО: Paper API для 1.17.x
+    compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
+
+    // --- ДОБАВЛЕННЫЕ ЗАВИСИМОСТИ ДЛЯ ГОЛОГРАММ ---
+    // HolographicDisplays API
+    // compileOnly (аналог provided в Maven)
+    compileOnly 'com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.9'
+
+    // DecentHolograms API
+    compileOnly 'com.github.decentsoftware-eu:decentholograms:2.8.6'
+    // ------------------------------------------------
+}
+
+tasks {
+    runServer {
+        minecraftVersion("1.17.1") // Указываем точную версию Paper
+    }
+}
+
+// 🛑 ИСПРАВЛЕНИЕ: Minecraft 1.17 требует Java 16.
+// Оставляем ваши настройки Java, которые выглядят правильно для 1.17+
+def targetJavaVersion = 17
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    // Если твоя среда (IntelliJ) использует более новую Java,
+    // указываем явно, что нужно использовать инструментарий Java 17
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+
+    if (targetJavaVersion >= 9) { // Используем 'release' для Java 9+
+        options.release.set(targetJavaVersion)
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

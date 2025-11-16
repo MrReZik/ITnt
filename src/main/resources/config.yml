@@ -1,0 +1,184 @@
+# Plugin created by MrReZik
+
+# Настройки голограмм
+hologram:
+  # Включить голограммы? (true/false)
+  enabled: true
+
+  # Провайдер голограмм. Доступные:
+  # "ArmorStand" - Ванильные арморстенды (не требуют плагинов, по умолчанию)
+  # "HolographicDisplays" - Требует плагин HolographicDisplays
+  # "DecentHolograms" - Требует плагин DecentHolograms
+  provider: "ArmorStand"
+
+  # Формат текста голограммы
+  format: "&#FF6347%name% &f- &e%time%s"
+
+  # Смещение голограммы по высоте (Y) от блока ТНТ
+  offset-y: 0.8
+
+# Сообщения
+messages:
+  # *** ИСПРАВЛЕНО: IntelTNT -> iTNT ***
+  prefix: "&8[&ci&4TNT&8] &r"
+  reload: "&aКонфигурация iTNT перезагружена."
+  no-permission: "&cУ вас нет прав для выполнения этой команды."
+  player-not-found: "&cИгрок '%player%' не найден."
+  tnt-not-found: "&cТип ТНТ '%tnt%' не найден."
+  invalid-amount: "&cНеверное количество."
+  give-success: "&fВы выдали &b%player% &fдинамит &e%tnt_name% &f(&b%amount%&f шт.)"
+  give-received: "&fВы получили &e%tnt_name% &f(&b%amount%&f шт.)"
+  tnt-disabled-in-this-world: "&cУстановка данного типа ТНТ в этом мире запрещена."
+  help-header: "&8&m--------------------------------------------------"
+  help-give: "&a/itnt give [игрок] [id/алиас] [кол-во] &7- Выдать кастомный ТНТ."
+  help-reload: "&a/itnt reload &7- Перезагрузить конфигурацию."
+  help-help: "&a/itnt help &7- Показать это меню."
+
+# Настройки ТНТ (динамита)
+tnt:
+  tnt1:
+    display-name: "&eСтандартный ТНТ"
+    lore:
+      - "&7Обычный динамит, но красивый."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aСила: &c4.0"
+      - "&f- &aВремя: &e4.0с"
+    # *** НОВОЕ: Алиасы для команды /itnt give ***
+    aliases:
+      - "standard"
+      - "default"
+    fuse-time: 4
+    auto-ignite: false
+    power: 4.0
+    block-damage: true
+    entity-damage: true
+    explode-in-water: false
+    break-obsidian: false
+    disabled-worlds: []
+
+  tnt2:
+    display-name: "&cСлабый ТНТ"
+    lore:
+      - "&7Не наносит урон игрокам."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aУрон по игрокам: &cНет"
+      - "&f- &aВремя: &e4.0с"
+    aliases:
+      - "weak"
+      - "safe"
+    fuse-time: 4
+    auto-ignite: false
+    power: 3.0
+    block-damage: true
+    entity-damage: false
+    explode-in-water: false
+    break-obsidian: false
+    disabled-worlds: []
+
+  tnt3:
+    display-name: "&#FFB800Обсидиановый ТНТ"
+    lore:
+      - "&7Ломает только обсидиан,"
+      - "&7не нанося урон игрокам."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aУрон по игрокам: &cНет"
+      - "&f- &aУрон по блокам: &cТолько Обсидиан"
+      - "&f- &aВзрыв в воде: &aДа"
+    aliases:
+      - "obsidian"
+      - "obby"
+    fuse-time: 5
+    auto-ignite: true
+    power: 5.0
+    # Эта комбинация (false + true) ломает ТОЛЬКО обсидиан
+    block-damage: false
+    entity-damage: false
+    explode-in-water: true
+    break-obsidian: true
+    disabled-worlds: []
+
+  tnt4:
+    display-name: "&bГлубоководный ТНТ"
+    lore:
+      - "&7Взрывается под водой."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aВзрыв в воде: &aДа"
+    aliases:
+      - "water"
+      - "sea"
+    fuse-time: 4
+    auto-ignite: false
+    power: 4.0
+    block-damage: true
+    entity-damage: true
+    explode-in-water: true
+    break-obsidian: false
+    disabled-worlds: []
+
+  tnt5:
+    display-name: "&#FF4500Мега-бомба"
+    lore:
+      - "&cСамый мощный взрыв."
+      - "&cЛомает всё, включая обсидиан."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aСила: &c10.0"
+      - "&f- &aЛомает обсидиан: &aДа"
+      - "&f- &aВзрыв в воде: &aДа"
+    aliases:
+      - "mega"
+      - "bomb"
+    fuse-time: 8
+    auto-ignite: false
+    power: 10.0
+    block-damage: true
+    entity-damage: true
+    explode-in-water: true
+    break-obsidian: true
+    disabled-worlds: []
+
+  tnt6:
+    display-name: "&eМгновенный ТНТ"
+    lore:
+      - "&7Срабатывает при установке."
+      - "&7Короткий фитиль."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aАвто-поджиг: &aДа"
+      - "&f- &aВремя: &e1.0с"
+    aliases:
+      - "instant"
+      - "quick"
+    fuse-time: 1
+    auto-ignite: true
+    power: 4.0
+    block-damage: true
+    entity-damage: true
+    explode-in-water: false
+    break-obsidian: false
+    disabled-worlds: []
+
+  tnt7:
+    display-name: "&3Прозрачный ТНТ"
+    lore:
+      - "&7Не ломает блоки."
+      - "&7Только отталкивает существ."
+      - ""
+      - "&#FFD700Особые свойства:"
+      - "&f- &aУрон по блокам: &cНет"
+      - "&f- &aУрон по игрокам: &aДа"
+    aliases:
+      - "ghost"
+      - "push"
+    fuse-time: 4
+    auto-ignite: false
+    power: 4.0
+    block-damage: false
+    entity-damage: true
+    explode-in-water: false
+    break-obsidian: false
+    disabled-worlds: []

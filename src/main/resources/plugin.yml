@@ -1,0 +1,51 @@
+name: iTNT
+version: 1.0.0
+main: com.mrrezik.itnt.itnt
+api-version: 1.17
+author: MrReZik
+description: Plugin for custom TNT with flags and holograms.
+
+commands:
+  itnt:
+    description: Main command for iTNT plugin.
+    usage: /<command> [help]
+    # ДОБАВЛЕНЫ: Алиасы /it и /tnt
+    aliases: [it, tnt]
+
+permissions:
+  # --- Права на команды ---
+  itnt.help:
+    description: Allows usage of /itnt help.
+    default: op
+  itnt.reload:
+    description: Allows usage of /itnt reload.
+    default: op
+  itnt.give:
+    description: Allows usage of /itnt give.
+    default: op
+
+  # --- Права на установку ТНТ ---
+  itnt.place.*:
+    description: Allows placing all custom TNTs.
+    default: op
+  itnt.place.tnt1:
+    description: Allows placing 'tnt1' (Ванильный)
+    default: true
+  itnt.place.tnt2:
+    description: Allows placing 'tnt2' (Слабый)
+    default: true
+  itnt.place.tnt3:
+    description: Allows placing 'tnt3' (Обсидиановый)
+    default: true
+  itnt.place.tnt4:
+    description: Allows placing 'tnt4' (Водный)
+    default: true
+  itnt.place.tnt5:
+    description: Allows placing 'tnt5' (Мега-бомба)
+    default: true
+  itnt.place.tnt6:
+    description: Allows placing 'tnt6' (Мгновенный)
+    default: true
+  itnt.place.tnt7:
+    description: Allows placing 'tnt7' (Призрак - Без урона)
+    default: true
