@@ -1,4 +1,4 @@
-# 🧨 iTNT (IntelTNT)
+# 🧨 iTNT
 
 **Custom TNT for your Minecraft server with flags, holograms, and ultimate explosion control!**
 
